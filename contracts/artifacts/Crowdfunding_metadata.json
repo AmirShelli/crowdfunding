@@ -49,6 +49,11 @@
 						"internalType": "bool",
 						"name": "goalReached",
 						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "closed",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -58,7 +63,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "campaignId",
+						"name": "_campaignId",
 						"type": "uint256"
 					}
 				],
@@ -150,11 +155,11 @@
 	},
 	"sources": {
 		"contracts/Crowdfunding.sol": {
-			"keccak256": "0x6ed7678df0c82643ed90114b219327edec3b1ec25f6595f5a470c4bc7ca18917",
+			"keccak256": "0x552feaf92c328a892224978977c4b7abb533081207be4571ac12d1c5b6dc742b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://135438867f11526506b51caf602de24c1845e6e660cee8d0aa0eaeeed78308a1",
-				"dweb:/ipfs/QmanRL2WmzopFeubH6VUfsAt6xbCx4xeY28UM3xWqCxCtd"
+				"bzz-raw://d565661746a9211c445ab73ebac7bc5e84b68e230f3d761e9988034a83eb19f9",
+				"dweb:/ipfs/QmPWsNXqnbSG2sF6BgW7nAGDbqtFQhy2ptCysm5pM7VrRm"
 			]
 		}
 	},

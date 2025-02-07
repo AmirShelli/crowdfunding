@@ -190,7 +190,13 @@
 					}
 				],
 				"name": "createCampaign",
-				"outputs": [],
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -249,11 +255,11 @@
 	},
 	"sources": {
 		"contracts/Crowdfunding.sol": {
-			"keccak256": "0x56499dd4b4e22e9adc9f2ebff218e325b57630a64a3df0c811d3f0fa13d6ff7e",
+			"keccak256": "0xf9cefcb1364d804b05d0c6e837fdec01703b3f9ffecb453da55cf03c4c79db68",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://56a0f6d3712cb68b3f77f7278b47897e460e28eef957deb37b9c871567e44b6e",
-				"dweb:/ipfs/QmWM8XC1a8gaDFPdZaahyhuT6cfGM6D4UkHZrx7LqQPP2a"
+				"bzz-raw://4c1fe50d332789a6275ad904e3ee36b4d2ad0f6b5c85414f597dc57c27172ef1",
+				"dweb:/ipfs/QmQSGJd1QgPKLbvuvMryrsk847ukBSPRs4bkoQWRVzLeWY"
 			]
 		}
 	},

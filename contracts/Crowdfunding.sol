@@ -42,7 +42,7 @@ contract Crowdfunding {
         string calldata _description,
         uint256 _duration,
         uint256 _goal
-    ) external {
+    ) external returns (uint256) {
         require(_goal > 0, "Goal must be > 0");
         require(_duration > 0, "Duration must be > 0");
 
@@ -58,6 +58,7 @@ contract Crowdfunding {
         newCampaign.closed = false;
 
         emit CampaignCreated(campaigns.length - 1, msg.sender);
+        return campaigns.length - 1;
     }
 
     function contribute(uint256 campaignId) external payable validCampaign(campaignId) campaignActive(campaignId) {

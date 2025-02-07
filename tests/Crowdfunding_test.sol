@@ -1,31 +1,56 @@
 // SPDX-License-Identifier: GPL-3.0
-        
+
 pragma solidity >=0.4.22 <0.9.0;
 
 // This import is automatically injected by Remix
-import "remix_tests.sol"; 
+import "remix_tests.sol";
 
-// This import is required to use custom transaction context
-// Although it may fail compilation in 'Solidity Compiler' plugin
-// But it will work fine in 'Solidity Unit Testing' plugin
 import "remix_accounts.sol";
 import "../contracts/Crowdfunding.sol";
 
-// File name has to end with '_test.sol', this file can contain more than one testSuite contracts
 contract testSuite {
+    Crowdfunding crowdfunding;
+    uint256 campaignId;
 
-    /// 'beforeAll' runs before all other tests
-    /// More special functions are: 'beforeEach', 'beforeAll', 'afterEach' & 'afterAll'
-    function beforeAll() public {
-        // <instantiate contract>
-        Assert.equal(uint(1), uint(1), "1 should be equal to 1");
+    function beforeEach() internal {
+        crowdfunding = new Crowdfunding();
+        campaignId = crowdfunding.createCampaign(
+            "Test Campaign",
+            "This is a test campaign",
+            3600,
+            1 ether
+        );
+    }
+
+    function testCreateCampaign() public {
+        Assert.equal(campaignId, 0, "Campaign ID should be 0");
+    }
+
+    function testContribute() public payable {
+        uint256 contributionAmount = 0.5 ether;
+        crowdfunding.contribute{value: contributionAmount}(campaignId);
+
+        (, , , , uint256 totalFunds, , , ) = crowdfunding.campaigns(campaignId);
+        Assert.equal(
+            totalFunds,
+            contributionAmount,
+            "Total funds should match contribution"
+        );
     }
 
     function checkSuccess() public {
-        // Use 'Assert' methods: https://remix-ide.readthedocs.io/en/latest/assert_library.html
-        Assert.ok(2 == 2, 'should be true');
-        Assert.greaterThan(uint(2), uint(1), "2 should be greater than to 1");
-        Assert.lesserThan(uint(2), uint(3), "2 should be lesser than to 3");
+        // Use 'Assert' methods: https://remix-ide.readthedocs.io/en/latest/assert_library.
+        Assert.ok(2 == 2, "should be true");
+        Assert.greaterThan(
+            uint256(2),
+            uint256(1),
+            "2 should be greater than to 1"
+        );
+        Assert.lesserThan(
+            uint256(2),
+            uint256(3),
+            "2 should be lesser than to 3"
+        );
     }
 
     function checkSuccess2() public pure returns (bool) {
@@ -42,4 +67,3 @@ contract testSuite {
         Assert.equal(msg.value, 100, "Invalid value");
     }
 }
-    

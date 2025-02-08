@@ -28,14 +28,29 @@ contract Crowdfunding {
 
     modifier campaignActive(uint256 _campaignId) {
         require(!campaigns[_campaignId].closed, "Campaign closed");
-        require(block.timestamp < campaigns[_campaignId].deadline, "Campaign ended");
+        require(
+            block.timestamp < campaigns[_campaignId].deadline,
+            "Campaign ended"
+        );
         _;
     }
 
     event CampaignCreated(uint256 indexed campaignId, address creator);
-    event ContributionMade(uint256 indexed campaignId, address contributor, uint256 amount);
-    event FundsWithdrawn(uint256 indexed campaignId, address creator, uint256 amount);
-    event ContributionWithdrawn(uint256 indexed campaignId, address contributor, uint256 amount);
+    event ContributionMade(
+        uint256 indexed campaignId,
+        address contributor,
+        uint256 amount
+    );
+    event FundsWithdrawn(
+        uint256 indexed campaignId,
+        address creator,
+        uint256 amount
+    );
+    event ContributionWithdrawn(
+        uint256 indexed campaignId,
+        address contributor,
+        uint256 amount
+    );
 
     function createCampaign(
         string calldata _title,
@@ -61,7 +76,9 @@ contract Crowdfunding {
         return campaigns.length - 1;
     }
 
-    function contribute(uint256 campaignId) external payable validCampaign(campaignId) campaignActive(campaignId) {
+    function contribute(
+        uint256 campaignId
+    ) external payable validCampaign(campaignId) campaignActive(campaignId) {
         require(msg.value > 0, "Contribution must be > 0");
 
         Campaign storage campaign = campaigns[campaignId];
@@ -75,7 +92,9 @@ contract Crowdfunding {
         emit ContributionMade(campaignId, msg.sender, msg.value);
     }
 
-    function withdrawFunds(uint256 _campaignId) external validCampaign(_campaignId) onlyCreator(_campaignId) {
+    function withdrawFunds(
+        uint256 _campaignId
+    ) external validCampaign(_campaignId) onlyCreator(_campaignId) {
         Campaign storage campaign = campaigns[_campaignId];
         require(campaign.goalReached, "Goal not reached");
         require(block.timestamp >= campaign.deadline, "Deadline not passed");
@@ -89,7 +108,9 @@ contract Crowdfunding {
         emit FundsWithdrawn(_campaignId, msg.sender, amount);
     }
 
-    function withdrawContribution(uint256 _campaignId) external validCampaign(_campaignId) {
+    function withdrawContribution(
+        uint256 _campaignId
+    ) external validCampaign(_campaignId) {
         Campaign storage campaign = campaigns[_campaignId];
         require(block.timestamp >= campaign.deadline, "Campaign not ended");
         require(!campaign.goalReached, "Goal reached");
@@ -101,5 +122,9 @@ contract Crowdfunding {
         campaign.contributions[msg.sender] = 0;
         payable(msg.sender).transfer(amount);
         emit ContributionWithdrawn(_campaignId, msg.sender, amount);
+    }
+
+    function getCampaignsCount() public view returns (uint256) {
+        return campaigns.length;
     }
 }

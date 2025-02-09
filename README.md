@@ -23,32 +23,28 @@ Before you begin, ensure you have:
 - **Node.js and npm** installed (download from [nodejs.org](https://nodejs.org/)).
 - **Hardhat:** A development environment to compile, deploy, and test Ethereum smart contracts.
 
-To install Hardhat (and the recommended toolbox), run:
-
+- **To install Hardhat (and the recommended toolbox)**, run:
 ```sh
 npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
 ```
 
 ## 3. Contract Deployment
 
-For testing and development, start a local Ethereum blockchain using Hardhat by running:
-
+- For testing and development, **start a local Ethereum blockchain using Hardhat** by running:
 ```sh
 npx hardhat node
 ```
 
 This command launches a local blockchain that simulates the Ethereum network, allowing you to deploy and interact with contracts without using real ETH.
 
-- In a new terminal window (while the node is running), deploy your contract by running:
-
+- In a new terminal window (while the node is running), **deploy your contract** by running:
 ```sh
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
 The deploy script will deploy the contract and save the deployed address in a file called `contractAddress.json`.
 
-Example output:
-
+**Example output:**
 ```sh
 Crowdfunding deployed to: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
 Contract address saved to contractAddress.json
@@ -71,8 +67,7 @@ The `interact.js` script demonstrates how to call each function in the Crowdfund
 	- If the funding goal is met, the campaign creator withdraws the funds.
 	- If the goal is not met, contributors withdraw their contributions.
 
-To run the interaction script, execute:
-
+- **To run the interaction script**, execute:
 ```sh
 npx hardhat run scripts/interact.js --network localhost
 ```

@@ -16,6 +16,8 @@ This project implements a simple Crowdfunding smart contract in Solidity. The co
 
 The contract also emits events to log key actions (campaign creation, contributions, fund withdrawals, etc.).
 
+**Note:** The repository comes with a set of scripts that deploys and interacts with the contract in the `scripts` folder. Check the [Contract Deployment](#3-contract-deployment) and [Interacting with the Contract](#4-interacting-with-the-contract) sections for details.
+
 ## 2. Prerequisites
 
 Before you begin, ensure you have:
@@ -29,6 +31,8 @@ npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
 ```
 
 ## 3. Contract Deployment
+
+**Note:** Ensure you are in the root directory of the repository before executing the following commands.
 
 1. For testing and development, **start a local Ethereum blockchain using Hardhat** by running:
 ```sh
@@ -51,6 +55,8 @@ Contract address saved to contractAddress.json
 ```
 
 ## 4. Interacting with the Contract
+
+**Note:** Ensure you are in the root directory of the repository before executing the following commands.
 
 The `interact.js` script demonstrates how to call each function in the Crowdfunding contract. A typical scenario is as follows:
 

@@ -16,7 +16,7 @@ This project implements a simple Crowdfunding smart contract in Solidity. The co
 
 The contract also emits events to log key actions (campaign creation, contributions, fund withdrawals, etc.).
 
-**Note:** The repository comes with a set of scripts that deploys and interacts with the contract in the `scripts` folder. 
+**Note:** The repository comes with a set of scripts that deploy and interact with the contract in the `scripts` folder. 
 Check the [#Contract Deployment](#3-contract-deployment) and [#Interacting with the Contract](#4-interacting-with-the-contract) sections for details.
 
 ## 2. Prerequisites
